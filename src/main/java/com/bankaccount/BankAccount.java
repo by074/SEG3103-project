@@ -42,7 +42,7 @@ public class BankAccount {
      */
     void deposit(BigDecimal amount) {
         validateAmount(amount);
-        balance = balance.subtract(amount);
+        balance = balance.add(amount);
     }
 
     /**
@@ -56,7 +56,7 @@ public class BankAccount {
                     "Insufficient funds in account " + accountId
                             + ". Balance: " + balance + ", requested: " + amount);
         }
-        balance = balance.add(amount);
+        balance = balance.subtract(amount);
     }
 
     private void validateAmount(BigDecimal amount) {
