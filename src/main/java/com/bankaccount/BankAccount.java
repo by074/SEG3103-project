@@ -56,7 +56,7 @@ public class BankAccount {
                     "Insufficient funds in account " + accountId
                             + ". Balance: " + balance + ", requested: " + amount);
         }
-        balance = balance.subtract(amount);
+        balance = balance.add(amount);
     }
 
     private void validateAmount(BigDecimal amount) {
