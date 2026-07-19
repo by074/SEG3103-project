@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
@@ -29,7 +30,11 @@ jobs:
       - name: Build and run tests
         run: mvn -B clean test
 
-      - name: Upload test and coverage reports
+      - name: Generate Allure report
+        if: always()
+        run: mvn -B allure:report
+
+      - name: Upload test, coverage, and Allure reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -37,4 +42,6 @@ jobs:
           path: |
             target/surefire-reports
             target/site/jacoco
-          if-no-files-found: ignore
+            target/allure-results
+            target/site/allure-maven-plugin
+          if-no-files-found: warn
