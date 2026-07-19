@@ -42,7 +42,7 @@ public class BankAccount {
      */
     void deposit(BigDecimal amount) {
         validateAmount(amount);
-        balance = balance.add(amount);
+        balance = balance.subtract(amount);
     }
 
     /**
