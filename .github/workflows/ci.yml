@@ -9,6 +9,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
 
@@ -44,4 +46,4 @@ jobs:
             target/site/jacoco
             target/allure-results
             target/site/allure-maven-plugin
-          if-no-files-found: warn
+          if-no-files-found: ignore
